@@ -7,9 +7,12 @@ float brushSize = 1;
 color colour = color(255, 255, 255);
 float brushSelection = 255;
 float stampSelection = 0;
+float brushHover = 0;
+float stampHover = 0;
+
 
 void setup() {
-  size(900, 675, P2D);
+  size(900, 675/*, P2D*/);
   bg = loadImage("images\\bg.png");
   bgTopRow = loadImage("images\\bgTopRow.png");
   bgBottomRow = loadImage("images\\bgBottomRow.png");
@@ -22,17 +25,26 @@ void setup() {
   fill(120);
 }
 void draw() {
+  brushHover = 0;
+  stampHover = 0;
+
   // Buttons
-  if(mouseX > 625 && mouseX < 645 && mouseY > 10 && mouseY < 30 && mousePressed && mode != "Brush"){
-    mode = "Brush";
-    brushSelection = 255;
-    stampSelection = 0;
+  if(mouseX > 625 && mouseX < 645 && mouseY > 10 && mouseY < 30){ // If mouse is over button
+    if(mousePressed && mode != "Brush"){ // If button is pressed
+      mode = "Brush";
+      brushSelection = 255;
+      stampSelection = 0;
+    }
+    brushHover = 100;
   }
   
-  if(mouseX > 685 && mouseX < 705 && mouseY > 10 && mouseY < 30 && mousePressed && mode != "Stamp"){
-    mode = "Stamp";
-    stampSelection = 255;
-    brushSelection = 0;
+  if(mouseX > 685 && mouseX < 705 && mouseY > 10 && mouseY < 30){ // If mouse is over button
+    if(mousePressed && mode != "Stamp"){ // If button is pressed
+      mode = "Stamp";
+      stampSelection = 255;
+      brushSelection = 0;
+    }
+    stampHover = 100;
   }
   
   if(mouseX > 245 && mouseX < 380 && mouseY > 637 && mouseY < 663 && mousePressed) {
@@ -70,6 +82,14 @@ void draw() {
   ellipse(635, 20, 25, 25); // Brush Selection
   stroke(120, stampSelection);
   ellipse(695, 20, 25, 25); // Stamp Selection
+  
+  noStroke();
+  fill(120, brushHover);
+  ellipse(635, 20, 25, 25); // Brush Hover
+  fill(120, stampHover);
+  ellipse(695, 20, 25, 25); // Stamp Hover
+  
+  
   
   rectMode(CENTER);
   fill(120);
