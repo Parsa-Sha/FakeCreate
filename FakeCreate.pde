@@ -97,7 +97,7 @@ void draw() {
     }
     
     if(mousePressed && mode == "Erase"){ // Erasing
-      stroke(30, 255);
+      stroke(37, 255);
       strokeWeight(sizeSliderValue);
       line(mouseX, mouseY, pmouseX, pmouseY); 
       strokeWeight(1);
