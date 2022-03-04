@@ -1,4 +1,4 @@
-PImage image, loadedImage, bg, bgTopRow, bgBottomRow;
+PImage image, loadedImage, bg, bgO;
 float size = 5;
 String mode = "Brush";
 float sizeSliderValue = 1;
@@ -16,8 +16,7 @@ float eraseHover = 0;
 void setup() {
   size(900, 675, P2D);
   bg = loadImage("images\\bg.png");
-  bgTopRow = loadImage("images\\bgTopRow.png");
-  bgBottomRow = loadImage("images\\bgBottomRow.png");
+  bgO = loadImage("images\\bgo.png");
   image(bg, 0, 0, width, height);
   imageMode(CENTER);
   image = loadImage("images\\brusha.png");
@@ -110,8 +109,7 @@ void draw() {
   }
   
   imageMode(CORNER);
-  image(bgTopRow, 0, 0, width, height);
-  image(bgBottomRow, 0, 0, width, height);
+  image(bgO, 0, 0, width, height);
   
   noFill();
   stroke(120, brushSelection);
