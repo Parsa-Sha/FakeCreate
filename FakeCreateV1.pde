@@ -22,6 +22,7 @@ float newHover = 0;
 float loadHover = 0;
 float saveHover = 0;
 String path = "";
+String stampPath = "";
 boolean loadCompleted = false;
 
 
@@ -176,6 +177,10 @@ void draw() {
 }
 
 void stampBrush(int x, int y, int scatterR) {
+  if(stampPath != ""){
+    image = loadImage(stampPath);
+  }
+  
   float bSize = random(20)*size;
   float rotation = random(360);
   float scatterX = random(scatterR) - scatterR / 2;
@@ -198,6 +203,19 @@ void saveImage(File f){ // Saving Function
 void openImage(File f){ // Loading Function
   if(f != null){
     path = f.getPath();
+    f = null;
+  }
+}
+
+void keyPressed() {
+  if(key=='s'||key=='S'){
+    selectInput("Choose your stamp", "loadStampImage");
+  }
+}
+
+void loadStampImage(File f){ // Loading Function
+  if(f != null){
+    stampPath = f.getPath();
     f = null;
   }
 }
