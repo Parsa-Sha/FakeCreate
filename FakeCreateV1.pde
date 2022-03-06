@@ -1,3 +1,10 @@
+// FakeCreate V1
+// A basic drawwing app that allows for a basic brush, an eraser, and stamp with various size, rotation, and adjustable offset, 
+// as well as being able to select which image to use as a stamp. It also includes loading and saving files.
+// 03/06/2022
+// https://github.com/Parsa-Sha/FakeCreateV1
+
+
 PImage image, loadedImage, bg, bgO;
 float size = 5;
 String mode = "Brush";
