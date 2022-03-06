@@ -170,7 +170,6 @@ void draw() {
   stroke(120);
   rect(map(sizeSliderValue, 1, 100, 245, 380), 650, 25, 25, 4); // Size Slider Location
   rect(map(variationSliderValue, 1, 100, 690, 555), 650, 25, 25, 4); // Variation Slider Location
-  ellipse(816, 18, 27, 27); // testing 
   fill(colour);
   noStroke();
   ellipse(881, 19, 26, 26);
