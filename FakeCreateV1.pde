@@ -134,7 +134,6 @@ void draw() {
   
   if(path != "" && !loadCompleted){ // Once path has been selected, image display will run
     PImage image = loadImage(path);
-    println(path);
     image(image, 0, 55);
     loadCompleted = true;
     path = "";
