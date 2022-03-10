@@ -20,6 +20,21 @@ float brightness, saturation;
 float brushSelection = 255;
 float stampSelection = 0;
 float eraseSelection = 0;
+
+float stampaSelection = 255;
+float stampbSelection = 0;
+float stampcSelection = 0;
+float stampdSelection = 0;
+float stampeSelection = 0;
+float stampFilesSelection = 0;
+
+float stampaHover = 0;
+float stampbHover = 0;
+float stampcHover = 0;
+float stampdHover = 0;
+float stampeHover = 0;
+float stampFilesHover = 0;
+
 float brushHover = 0;
 float stampHover = 0;
 float eraseHover = 0;
@@ -50,6 +65,12 @@ void draw() {
   eraseHover = 0;
   saveHover = 0;
   newHover = 0;
+  stampaHover = 0;
+  stampbHover = 0;
+  stampcHover = 0;
+  stampdHover = 0;
+  stampeHover = 0;
+  stampFilesHover = 0;
   
   // Buttons
   if(mouseX > 188 && mouseX < 215 && mouseY > 5 && mouseY < 32){
@@ -137,6 +158,59 @@ void draw() {
       colour = get(mouseX, mouseY);  
   }
   
+  if(mouseX > 310 && mouseX < 340 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed){
+      stampPath = "images\\brusha.png";  
+      stampaSelection = 255;
+      stampbSelection = 0;
+      stampcSelection = 0;
+      stampdSelection = 0;
+      stampeSelection = 0;
+      stampFilesSelection = 0;
+    }
+    stampaHover = 100;
+  }
+  
+  if(mouseX > 340 && mouseX < 370 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed){
+      stampPath = "images\\brushb.png";
+      stampbSelection = 255;
+      stampaSelection = 0;
+      stampcSelection = 0;
+      stampdSelection = 0;
+      stampeSelection = 0;
+      stampFilesSelection = 0;
+      
+    }
+    stampbHover = 100;
+  }
+  
+  if(mouseX > 380 && mouseX < 410 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed)
+      
+      stampcSelection = 255;
+      stampaSelection = 0;
+      stampbSelection = 0;
+      stampdSelection = 0;
+      stampeSelection = 0;
+      stampFilesSelection = 0;
+    stampcHover = 100;   
+  }
+  if(true) {
+    stampPath = "images\\brushc.png";
+  }
+  
+  if(true) {
+    stampPath = "images\\brushd.png";
+  }
+  
+  if(true) {
+    stampPath = "images\\brushe.png";
+  }
+  
+  
+  
+  
   if(path != "" && !loadCompleted){ // Once path has been selected, image display will run
     PImage image = loadImage(path);
     image(image, 0, 55);
@@ -154,6 +228,20 @@ void draw() {
   ellipse(695, 20, 27, 27); // Stamp Selection
   stroke(120, eraseSelection);
   ellipse(758, 20, 27, 27); // Erase Selection
+  stroke(120, stampaSelection);
+  
+  rectMode(CORNER);
+  rect(310, 2, 30, 30); // Stamp A Selection
+  stroke(120, stampbSelection);
+  rect(350, 2, 30, 30); // Stamp B Selection
+  stroke(120, stampcSelection);
+  rect(390, 2, 30, 30); // Stamp C Selection
+  stroke(120, stampdSelection);
+  rect(430, 2, 30, 30); // Stamp D Selection
+  stroke(120, stampeSelection);
+  rect(470, 2, 30, 30); // Stamp E Selection
+  stroke(120, stampFilesSelection);
+  rect(510, 2, 30, 30); // Files Stamp Selection
 
   noStroke();
   fill(120, brushHover);
@@ -168,6 +256,19 @@ void draw() {
   rect(201, 18, 27, 27); // Save Hover
   fill(120, loadHover);
   rect(158, 18, 27, 27); // Load Hover
+  fill(120, stampaHover);
+  rect(310, 2, 30, 30); // Stamp A Hover
+  fill(120, stampbHover);
+  rect(350, 2, 30, 30); // Stamp B Hover
+  fill(120, stampcHover);
+  rect(390, 2, 30, 30); // Stamp C Hover
+  fill(120, stampdHover);
+  rect(430, 2, 30, 30); // Stamp D Hover
+  fill(120, stampeHover);
+  rect(470, 2, 30, 30); // Stamp E Hover
+  fill(120, stampFilesHover);
+  rect(510, 2, 30, 30); // Files Stamp Hover
+  rectMode(CENTER);
   
 
   fill(128); // Background for gradient
@@ -183,6 +284,16 @@ void draw() {
     }
   }
   colorMode(RGB);
+  
+  rectMode(CORNERS);
+
+  /*
+  rect(350, 2, 380, 32);
+  rect(390, 2, 420, 32);
+  rect(430, 2, 460, 32);
+  rect(470, 2, 500, 32);
+  rect(510, 2, 540, 32);
+  */
   
   rectMode(CENTER);
   fill(120);
