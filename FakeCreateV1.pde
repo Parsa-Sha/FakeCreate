@@ -5,13 +5,18 @@
 // https://github.com/Parsa-Sha/FakeCreateV1
 
 
+// Stamp hotbar
+
 PImage image, loadedImage, bg, bgO;
 float size = 5;
 String mode = "Brush";
 float sizeSliderValue = 1;
 float variationSliderValue = 1;
 float brushSize = 1;
+color black = color(0, 128);
+color white = color(255, 128);
 color colour = color(255, 255, 255);
+float brightness, saturation;
 float brushSelection = 255;
 float stampSelection = 0;
 float eraseSelection = 0;
@@ -96,7 +101,7 @@ void draw() {
   
   if(mouseX > 803 && mouseX < 830 && mouseY > 5 && mouseY < 22){
     if(mousePressed){
-      image(bg, 0, 0, width, height);
+      background(colour);
     }
     newHover = 100;
   }
@@ -164,6 +169,20 @@ void draw() {
   fill(120, loadHover);
   rect(158, 18, 27, 27); // Load Hover
   
+
+  fill(128); // Background for gradient
+  rect(462, 617, 56, 56);
+  
+  colorMode(HSB); // Color tri-gradient inside color wheel
+  for(float i = 0; i < 56; i++) {
+    for(float j = 0; j < 56; j++){
+      saturation = i/56*255;
+      brightness = 256-(j/56*255);
+      stroke(hue(colour), saturation, brightness);
+      point(462 - 28 + i, 617 - 28 + j);
+    }
+  }
+  colorMode(RGB);
   
   rectMode(CENTER);
   fill(120);
