@@ -5,8 +5,6 @@
 // https://github.com/Parsa-Sha/FakeCreateV1
 
 
-// Stamp hotbar
-
 PImage image, loadedImage, bg, bgO, stampHotbara, stampHotbarb, stampHotbarc, stampHotbard, stampHotbare;
 float size = 5;
 String mode = "Brush";
@@ -126,7 +124,7 @@ void draw() {
     eraseHover = 100;
   }
   
-  if(mouseX > 803 && mouseX < 830 && mouseY > 5 && mouseY < 22){
+  if(mouseX > 803 && mouseX < 830 && mouseY > 10 && mouseY < 30){
     if(mousePressed){
       background(colour);
     }
@@ -243,7 +241,7 @@ void draw() {
     stampFilesHover = 100;
   }
 
-  if(path != "" && !loadCompleted){ // Once path has been selected, image display will run
+  if(!"".equals(path) && !loadCompleted){ // Once path has been selected, image display will run
     PImage image = loadImage(path);
     image(image, 0, 55);
     loadCompleted = true;
@@ -282,6 +280,7 @@ void draw() {
   rect(510, 2, 30, 30); // Files Stamp Selection
 
   noStroke();
+  rectMode(CENTER);
   fill(120, brushHover);
   ellipse(635, 20, 27, 27); // Brush Hover
   fill(120, stampHover);
@@ -358,12 +357,6 @@ void openImage(File f){ // Loading Function
   if(f != null){
     path = f.getPath();
     f = null;
-  }
-}
-
-void keyPressed() {
-  if(key=='s'||key=='S'){
-    
   }
 }
 
