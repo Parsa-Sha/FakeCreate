@@ -7,7 +7,7 @@
 
 // Stamp hotbar
 
-PImage image, loadedImage, bg, bgO;
+PImage image, loadedImage, bg, bgO, stampHotbara, stampHotbarb, stampHotbarc, stampHotbard, stampHotbare;
 float size = 5;
 String mode = "Brush";
 float sizeSliderValue = 1;
@@ -42,7 +42,7 @@ float newHover = 0;
 float loadHover = 0;
 float saveHover = 0;
 String path = "";
-String stampPath = "";
+String stampPath = "images\\brusha.png";
 boolean loadCompleted = false;
 
 
@@ -56,6 +56,12 @@ void setup() {
   rectMode(CORNER);
   noStroke();
   fill(120);
+  
+  stampHotbara = loadImage("images\\brusha.png");
+  stampHotbarb = loadImage("images\\brushb.png");
+  stampHotbarc = loadImage("images\\brushc.png");
+  stampHotbard = loadImage("images\\brushd.png");
+  stampHotbare = loadImage("images\\brushe.png");
 }
 
 void draw() {
@@ -171,7 +177,7 @@ void draw() {
     stampaHover = 100;
   }
   
-  if(mouseX > 340 && mouseX < 370 && mouseY > 2 && mouseY < 32) {
+  if(mouseX > 350 && mouseX < 380 && mouseY > 2 && mouseY < 32) {
     if(mousePressed){
       stampPath = "images\\brushb.png";
       stampbSelection = 255;
@@ -180,37 +186,63 @@ void draw() {
       stampdSelection = 0;
       stampeSelection = 0;
       stampFilesSelection = 0;
-      
     }
     stampbHover = 100;
   }
   
-  if(mouseX > 380 && mouseX < 410 && mouseY > 2 && mouseY < 32) {
-    if(mousePressed)
-      
+  if(mouseX > 390 && mouseX < 420 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed){
+      stampPath = "images\\brushc.png";
       stampcSelection = 255;
       stampaSelection = 0;
       stampbSelection = 0;
       stampdSelection = 0;
       stampeSelection = 0;
       stampFilesSelection = 0;
+    }
     stampcHover = 100;   
   }
-  if(true) {
-    stampPath = "images\\brushc.png";
+  
+  if(mouseX > 430 && mouseX < 460 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed){
+      stampPath = "images\\brushd.png";
+      stampdSelection = 255;
+      stampaSelection = 0;
+      stampbSelection = 0;
+      stampcSelection = 0;
+      stampeSelection = 0;
+      stampFilesSelection = 0;
+    }
+    stampdHover = 100;   
   }
   
-  if(true) {
-    stampPath = "images\\brushd.png";
+  if(mouseX > 470 && mouseX < 500 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed) {
+      stampPath = "images\\brushe.png";
+      stampeSelection = 255;
+      stampaSelection = 0;
+      stampbSelection = 0;
+      stampcSelection = 0;
+      stampdSelection = 0;
+      stampFilesSelection = 0;
+    }
+    stampeHover = 100;   
+  }  
+  
+  if(mouseX > 510 && mouseX < 540 && mouseY > 2 && mouseY < 32) {
+    if(mousePressed){
+      mousePressed = false;
+      selectInput("Choose your stamp", "loadStampImage");
+      stampFilesSelection = 255;
+      stampaSelection = 0;
+      stampbSelection = 0;
+      stampcSelection = 0;
+      stampdSelection = 0;
+      stampeSelection = 0;
+    }
+    stampFilesHover = 100;
   }
-  
-  if(true) {
-    stampPath = "images\\brushe.png";
-  }
-  
-  
-  
-  
+
   if(path != "" && !loadCompleted){ // Once path has been selected, image display will run
     PImage image = loadImage(path);
     image(image, 0, 55);
@@ -220,6 +252,12 @@ void draw() {
   
   imageMode(CORNER);
   image(bgO, 0, 0, width, height);
+  image(stampHotbara, 310, 2, 30, 30);
+  image(stampHotbarb, 350, 2, 30, 30);
+  image(stampHotbarc, 390, 2, 30, 30);
+  image(stampHotbard, 430, 2, 30, 30);
+  image(stampHotbare, 470, 2, 30, 30);
+  
   
   noFill();
   stroke(120, brushSelection);
@@ -285,16 +323,6 @@ void draw() {
   }
   colorMode(RGB);
   
-  rectMode(CORNERS);
-
-  /*
-  rect(350, 2, 380, 32);
-  rect(390, 2, 420, 32);
-  rect(430, 2, 460, 32);
-  rect(470, 2, 500, 32);
-  rect(510, 2, 540, 32);
-  */
-  
   rectMode(CENTER);
   fill(120);
   stroke(120);
@@ -306,10 +334,7 @@ void draw() {
 }
 
 void stampBrush(int x, int y, int scatterR) {
-  if(stampPath != ""){
-    image = loadImage(stampPath);
-  }
-  
+  image = loadImage(stampPath);
   float bSize = random(20)*size;
   float rotation = random(360);
   float scatterX = random(scatterR) - scatterR / 2;
@@ -338,7 +363,7 @@ void openImage(File f){ // Loading Function
 
 void keyPressed() {
   if(key=='s'||key=='S'){
-    selectInput("Choose your stamp", "loadStampImage");
+    
   }
 }
 
