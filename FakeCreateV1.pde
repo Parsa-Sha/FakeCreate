@@ -5,7 +5,7 @@
 // https://github.com/Parsa-Sha/FakeCreateV1
 
 
-PImage image, loadedImage, bg, bgO, stampHotbara, stampHotbarb, stampHotbarc, stampHotbard, stampHotbare;
+PImage image, loadedImage, bg, bgO, stampHotbara, stampHotbarb, stampHotbarc, stampHotbard, stampHotbare, stampHotbarFiles;
 float size = 5;
 String mode = "Brush";
 float sizeSliderValue = 1;
@@ -40,26 +40,27 @@ float newHover = 0;
 float loadHover = 0;
 float saveHover = 0;
 String path = "";
-String stampPath = "images\\brusha.png";
+String stampPath = "defaultStamps\\stampDefaulta.png";
 boolean loadCompleted = false;
 
 
 void setup() {
   size(900, 675);
-  bg = loadImage("images\\bg.png");
-  bgO = loadImage("images\\bgo.png");
+  bg = loadImage("backgrounds\\bg.png");
+  bgO = loadImage("backgrounds\\bgo.png");
   image(bg, 0, 0, width, height);
   imageMode(CENTER);
-  image = loadImage("images\\brusha.png");
+  image = loadImage(stampPath);
   rectMode(CORNER);
   noStroke();
   fill(120);
   
-  stampHotbara = loadImage("images\\brusha.png");
-  stampHotbarb = loadImage("images\\brushb.png");
-  stampHotbarc = loadImage("images\\brushc.png");
-  stampHotbard = loadImage("images\\brushd.png");
-  stampHotbare = loadImage("images\\brushe.png");
+  stampHotbara = loadImage("defaultStamps\\stampDefaulta.png");
+  stampHotbarb = loadImage("defaultStamps\\stampDefaultb.png");
+  stampHotbarc = loadImage("defaultStamps\\stampDefaultc.png");
+  stampHotbard = loadImage("defaultStamps\\stampDefaultd.png");
+  stampHotbare = loadImage("defaultStamps\\stampDefaulte.png");
+  stampHotbarFiles = loadImage("backgrounds\\stampFileSelectionIcon.png");
 }
 
 void draw() {
@@ -164,7 +165,7 @@ void draw() {
   
   if(mouseX > 310 && mouseX < 340 && mouseY > 2 && mouseY < 32) {
     if(mousePressed){
-      stampPath = "images\\brusha.png";  
+      stampPath = "defaultStamps\\stampDefaulta.png";  
       stampaSelection = 255;
       stampbSelection = 0;
       stampcSelection = 0;
@@ -177,7 +178,7 @@ void draw() {
   
   if(mouseX > 350 && mouseX < 380 && mouseY > 2 && mouseY < 32) {
     if(mousePressed){
-      stampPath = "images\\brushb.png";
+      stampPath = "defaultStamps\\stampDefaultb.png";
       stampbSelection = 255;
       stampaSelection = 0;
       stampcSelection = 0;
@@ -190,7 +191,7 @@ void draw() {
   
   if(mouseX > 390 && mouseX < 420 && mouseY > 2 && mouseY < 32) {
     if(mousePressed){
-      stampPath = "images\\brushc.png";
+      stampPath = "defaultStamps\\stampDefaultc.png";
       stampcSelection = 255;
       stampaSelection = 0;
       stampbSelection = 0;
@@ -203,7 +204,7 @@ void draw() {
   
   if(mouseX > 430 && mouseX < 460 && mouseY > 2 && mouseY < 32) {
     if(mousePressed){
-      stampPath = "images\\brushd.png";
+      stampPath = "defaultStamps\\stampDefaultd.png";
       stampdSelection = 255;
       stampaSelection = 0;
       stampbSelection = 0;
@@ -216,7 +217,7 @@ void draw() {
   
   if(mouseX > 470 && mouseX < 500 && mouseY > 2 && mouseY < 32) {
     if(mousePressed) {
-      stampPath = "images\\brushe.png";
+      stampPath = "defaultStamps\\stampDefaulte.png";
       stampeSelection = 255;
       stampaSelection = 0;
       stampbSelection = 0;
@@ -255,7 +256,7 @@ void draw() {
   image(stampHotbarc, 390, 2, 30, 30);
   image(stampHotbard, 430, 2, 30, 30);
   image(stampHotbare, 470, 2, 30, 30);
-  
+  image(stampHotbarFiles, 510, 2, 30, 30);  
   
   noFill();
   stroke(120, brushSelection);
@@ -294,6 +295,8 @@ void draw() {
   fill(120, loadHover);
   rect(158, 18, 27, 27); // Load Hover
   fill(120, stampaHover);
+  
+  rectMode(CORNER);
   rect(310, 2, 30, 30); // Stamp A Hover
   fill(120, stampbHover);
   rect(350, 2, 30, 30); // Stamp B Hover
